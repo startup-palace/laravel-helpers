@@ -7,7 +7,7 @@ Laravel-helpers is a collection of helpers for your Laravel application.
 Require this package with Composer :
 
 ```
-composer require kblais/laravel-helpers
+composer require startup-palace/laravel-helpers
 ```
 
 ## List of helpers
