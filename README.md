@@ -122,7 +122,7 @@ Based on this, you can directly add cats to you user like that:
 $user->create([
     'name' => 'John Doe',
     'email' => 'john.doe@example.com',
-    'cats' = [
+    'cats' => [
         [
             'name' => 'Garfield',
             'color' => 'orange',
