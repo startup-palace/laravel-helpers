@@ -66,3 +66,74 @@ class User extends Model implements OrderByDefaultOrderInterface
     }
 }
 ```
+
+### `RelationshipHelpers`
+
+A list of helpers for your Eloquent relations.
+
+#### `syncHasManyRelation`
+
+Synchronize a hasMany relation, deleting old items, updating existing and
+creating new ones.
+
+##### Usage
+
+Let's start from this model:
+
+```php
+namespace App;
+
+use App\Cat;
+use Illuminate\Database\Eloquent\Model;
+use StartupPalace\LaravelHelpers\Eloquent\RelationshipHelpersTrait;
+
+class User extends Model
+{
+    use RelationshipHelpersTrait;
+
+    protected $fillable = [
+        'name', 'email', 'cats',
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::saved(function ($user) {
+            $user->syncRelation('cats');
+        });
+    }
+
+    public function cats()
+    {
+        return $this->hasMany(Cat::class);
+    }
+
+    public function setCatsAttribute($cats)
+    {
+        $this->setRelationItems('cats', $cats);
+    }
+}
+```
+
+Based on this, you can directly add cats to you user like that:
+
+```php
+$user->create([
+    'name' => 'John Doe',
+    'email' => 'john.doe@example.com',
+    'cats' = [
+        [
+            'name' => 'Garfield',
+            'color' => 'orange',
+        ],
+        [
+            'number' => 'Fuzzy',
+            'color' => 'yellow',
+        ],
+    ],
+]);
+```
+
+When you update your model, if you pass a `cats` key, cats will automatically be
+created if not existing, updated, or deleted if not in your `cats` array.
