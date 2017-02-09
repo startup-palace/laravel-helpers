@@ -100,7 +100,7 @@ class User extends Model
         parent::boot();
 
         self::saved(function ($user) {
-            $user->syncRelation('cats');
+            $user->syncHasManyRelation('cats');
         });
     }
 
@@ -111,7 +111,7 @@ class User extends Model
 
     public function setCatsAttribute($cats)
     {
-        $this->setRelationItems('cats', $cats);
+        $this->setHasManyItems('cats', $cats);
     }
 }
 ```
@@ -137,3 +137,63 @@ $user->create([
 
 When you update your model, if you pass a `cats` key, cats will automatically be
 created if not existing, updated, or deleted if not in your `cats` array.
+
+#### `syncHasOneRelation`
+
+Synchronize a hasOne relation, creating the new relation item or updating it.
+
+##### Usage
+
+```php
+namespace App;
+
+use App\Cat;
+use Illuminate\Database\Eloquent\Model;
+use StartupPalace\LaravelHelpers\Eloquent\RelationshipHelpersTrait;
+
+class User extends Model
+{
+    use RelationshipHelpersTrait;
+
+    protected $fillable = [
+        'name', 'email', 'address',
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::saved(function ($user) {
+            $user->syncHasOneRelation('address');
+        });
+    }
+
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
+    public function setAddressAttribute($address)
+    {
+        $this->setHasOneItem('address', $address);
+    }
+}
+```
+
+To create your user with its address, you just need the following:
+
+```php
+$user->create([
+    'name' => 'John Doe',
+    'email' => 'john.doe@example.com',
+    'address' = [
+        'number' => '18',
+        'street' => 'rue Scribe',
+        'city' => 'Nantes',
+        'country' => 'France',
+    ],
+]);
+```
+
+Passing an `address` array in your `update()` method will also update your
+user's address.
