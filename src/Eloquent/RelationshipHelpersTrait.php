@@ -31,7 +31,13 @@ trait RelationshipHelpersTrait
      */
     protected function syncHasOneRelation($relation)
     {
-        $this->{$relation}()->save($this->{$relation});
+        if (!$this->{$relation} || !$this->{$relation}->exists) {
+            $this->{$relation}()->delete();
+        }
+
+        if ($this->{$relation}) {
+            $this->{$relation}()->save($this->{$relation});
+        }
 
         return $this;
     }
@@ -74,12 +80,16 @@ trait RelationshipHelpersTrait
      */
     protected function setHasOneItem($relation, $data)
     {
-        $relatedModel = $this->getRelationModel($relation);
+        if (!empty($data)) {
+            $relatedModel = $this->getRelationModel($relation);
 
-        $item = $relatedModel->newInstance($data);
+            $item = $relatedModel->newInstance($data);
 
-        if ($item->exists = array_key_exists($relatedModel->getKeyName(), $data)) {
-            $item->{$relatedModel->getKeyName()} = $data[$relatedModel->getKeyName()];
+            if ($item->exists = array_key_exists($relatedModel->getKeyName(), $data ?: [])) {
+                $item->{$relatedModel->getKeyName()} = $data[$relatedModel->getKeyName()];
+            }
+        } else {
+            $this->item = null;
         }
 
         $this->setRelation(
