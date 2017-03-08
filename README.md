@@ -197,3 +197,50 @@ $user->create([
 
 Passing an `address` array in your `update()` method will also update your
 user's address.
+
+### `Routing\Middleware\AreRelated`
+
+The `AreRelated` middleware allows you to check if two route resources are
+related. It currently only works with `HasOneOrMany`/`BelongsTo` relations.
+
+##### Usage
+
+In your `app/Http/Kernel.php`, add the following line in the `$routeMiddleware`
+array:
+
+```php
+'areRelated' => \StartupPalace\LaravelHelpers\Routing\Middleware\AreRelated::class,
+```
+
+Then, let's imagine we have two models `Channel` and `Message`:
+
+```php
+use \Illuminate\Database\Model;
+
+class Channel extends Model
+{
+    //
+}
+
+class Message extends Model
+{
+    public function channel()
+    {
+        return $this->belongsTo(Channel::class);
+    }
+}
+```
+
+And, in your routes:
+
+```php
+Route::resource('channel.message', 'MessageController');
+```
+
+Because your resources and your relations have the same name (`channel` and
+`message`), you can add the middleware to your resource route to assure that the
+message you try to access belongs to it's channel:
+
+```php
+Route::resource('channel.message', 'MessageController')
+    ->middleware('areRelated:channel,message');
