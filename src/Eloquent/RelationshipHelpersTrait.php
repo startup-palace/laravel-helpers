@@ -89,7 +89,7 @@ trait RelationshipHelpersTrait
                 $item->{$relatedModel->getKeyName()} = $data[$relatedModel->getKeyName()];
             }
         } else {
-            $this->item = null;
+            $item = null;
         }
 
         $this->setRelation(
