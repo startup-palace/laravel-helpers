@@ -8,14 +8,14 @@ use Kblais\LaravelHelpers\Tests\Models\User;
 
 class SingularTableNameTest extends TestCase
 {
-    public function testModelHasSingularTableName()
+    public function testUserModelHasSingularTableName()
     {
         $user = new User;
 
         $this->assertEquals($user->getTable(), 'user');
     }
 
-    public function testModelHasCustomTableName()
+    public function testPostModelHasCustomTableName()
     {
         $post = new Post;
 
