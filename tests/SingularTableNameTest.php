@@ -3,11 +3,10 @@
 namespace Kblais\LaravelHelpers\Tests;
 
 use Illuminate\Http\Request;
-use Ramsey\Uuid\Uuid;
 use Kblais\LaravelHelpers\Tests\Models\Post;
 use Kblais\LaravelHelpers\Tests\Models\User;
 
-class UuidTest extends TestCase
+class SingularTableNameTest extends TestCase
 {
     public function testModelHasSingularTableName()
     {
