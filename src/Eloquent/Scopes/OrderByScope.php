@@ -31,7 +31,7 @@ class OrderByScope implements Scope
         $query = $builder->getQuery();
 
         foreach ((array) $query->orders as $key => $order) {
-            if ($order['column'] == $this->column) {
+            if ($order['column'] === $this->column) {
                 unset($query->orders[$key]);
 
                 $query->orders = array_values($query->orders);
