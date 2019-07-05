@@ -52,18 +52,15 @@ class User extends Model implements OrderByDefaultOrderInterface
 {
     use OrderByDefaultOrderTrait;
 
-    public function getDefaultOrder()
-    {
-        /**
-         * Defaults to
-         * column: self::CREATED_AT
-         * asc: true
-         */
-        return [
-            'column' => 'last_login_at',
-            'asc' => 'desc',
-        ];
-    }
+    /**
+     * Defaults to :
+     * - column: `created_at`
+     * - asc: `true`
+     */
+    protected $defaultOrder = [
+        'column' => 'last_login_at',
+        'asc' => 'false',
+    ];
 }
 ```
 

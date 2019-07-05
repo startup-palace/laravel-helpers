@@ -3,6 +3,7 @@
 namespace Kblais\LaravelHelpers\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Kblais\LaravelHelpers\Eloquent\Scopes\OrderByScope;
 
 /**
@@ -27,8 +28,8 @@ trait OrderByDefaultOrderTrait
         $defaultOrder = with(new static)->getDefaultOrder();
 
         return new OrderByScope(
-            array_get($defaultOrder, 'column'),
-            array_get($defaultOrder, 'asc', true)
+            Arr::get($defaultOrder, 'column'),
+            Arr::get($defaultOrder, 'asc')
         );
     }
 
@@ -43,9 +44,13 @@ trait OrderByDefaultOrderTrait
 
     public function getDefaultOrder()
     {
+        if (property_exists($this, 'defaultOrder')) {
+            return $this->defaultOrder;
+        }
+
         return [
             'column' => self::CREATED_AT,
-            'asc' => null,
+            'asc' => true,
         ];
     }
 }
