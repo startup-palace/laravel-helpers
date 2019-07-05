@@ -1,4 +1,8 @@
-# laravel-helpers
+# [DEPRECATED] laravel-helpers
+
+This package has been deprecated in favor of [kblais/laravel-helpers](https://github.com/kblais/laravel-helpers).
+
+---
 
 Laravel-helpers is a collection of helpers for your Laravel application.
 
