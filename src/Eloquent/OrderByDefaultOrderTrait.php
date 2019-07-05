@@ -1,9 +1,9 @@
 <?php
 
-namespace StartupPalace\LaravelHelpers\Eloquent;
+namespace Kblais\LaravelHelpers\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
-use StartupPalace\LaravelHelpers\Eloquent\Scopes\OrderByScope;
+use Kblais\LaravelHelpers\Eloquent\Scopes\OrderByScope;
 
 /**
  * Apply a default order on your model based on an attribute.

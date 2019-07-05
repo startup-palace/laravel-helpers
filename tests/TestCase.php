@@ -1,6 +1,6 @@
 <?php
 
-namespace StartupPalace\LaravelHelpers\Tests;
+namespace Kblais\LaravelHelpers\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 

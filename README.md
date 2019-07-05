@@ -7,7 +7,7 @@ Laravel-helpers is a collection of helpers for your Laravel application.
 Require this package with Composer :
 
 ```
-composer require startup-palace/laravel-helpers
+composer require kblais/laravel-helpers
 ```
 
 ## List of helpers
@@ -26,7 +26,7 @@ Add the trait in your model :
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use StartupPalace\LaravelHelpers\Eloquent\SingularTableNameTrait;
+use Kblais\LaravelHelpers\Eloquent\SingularTableNameTrait;
 
 class User extends Model
 {
@@ -45,8 +45,8 @@ can use to define your default order directly in your model attributes.
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use StartupPalace\LaravelHelpers\Eloquent\OrderByDefaultOrderTrait;
-use StartupPalace\LaravelHelpers\Eloquent\OrderByDefaultOrderInterface;
+use Kblais\LaravelHelpers\Eloquent\OrderByDefaultOrderTrait;
+use Kblais\LaravelHelpers\Eloquent\OrderByDefaultOrderInterface;
 
 class User extends Model implements OrderByDefaultOrderInterface
 {
@@ -85,7 +85,7 @@ namespace App;
 
 use App\Cat;
 use Illuminate\Database\Eloquent\Model;
-use StartupPalace\LaravelHelpers\Eloquent\RelationshipHelpersTrait;
+use Kblais\LaravelHelpers\Eloquent\RelationshipHelpersTrait;
 
 class User extends Model
 {
@@ -149,7 +149,7 @@ namespace App;
 
 use App\Cat;
 use Illuminate\Database\Eloquent\Model;
-use StartupPalace\LaravelHelpers\Eloquent\RelationshipHelpersTrait;
+use Kblais\LaravelHelpers\Eloquent\RelationshipHelpersTrait;
 
 class User extends Model
 {
@@ -209,7 +209,7 @@ In your `app/Http/Kernel.php`, add the following line in the `$routeMiddleware`
 array:
 
 ```php
-'areRelated' => \StartupPalace\LaravelHelpers\Routing\Middleware\AreRelated::class,
+'areRelated' => \Kblais\LaravelHelpers\Routing\Middleware\AreRelated::class,
 ```
 
 Then, let's imagine we have two models `Channel` and `Message`:

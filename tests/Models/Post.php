@@ -1,9 +1,9 @@
 <?php
 
-namespace StartupPalace\LaravelHelpers\Tests\Models;
+namespace Kblais\LaravelHelpers\Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use StartupPalace\LaravelHelpers\Eloquent\SingularTableNameTrait;
+use Kblais\LaravelHelpers\Eloquent\SingularTableNameTrait;
 
 class Post extends Model
 {

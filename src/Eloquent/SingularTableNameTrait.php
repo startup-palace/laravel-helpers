@@ -1,6 +1,6 @@
 <?php
 
-namespace StartupPalace\LaravelHelpers\Eloquent;
+namespace Kblais\LaravelHelpers\Eloquent;
 
 use Illuminate\Support\Str;
 

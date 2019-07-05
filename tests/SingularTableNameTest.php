@@ -1,11 +1,11 @@
 <?php
 
-namespace StartupPalace\LaravelHelpers\Tests;
+namespace Kblais\LaravelHelpers\Tests;
 
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
-use StartupPalace\LaravelHelpers\Tests\Models\Post;
-use StartupPalace\LaravelHelpers\Tests\Models\User;
+use Kblais\LaravelHelpers\Tests\Models\Post;
+use Kblais\LaravelHelpers\Tests\Models\User;
 
 class UuidTest extends TestCase
 {

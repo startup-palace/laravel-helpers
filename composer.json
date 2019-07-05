@@ -1,5 +1,5 @@
 {
-    "name": "startup-palace/laravel-helpers",
+    "name": "kblais/laravel-helpers",
     "description": "A collection of helpers for your Laravel application.",
     "require": {
         "illuminate/database": "~5.2",
@@ -12,12 +12,12 @@
     },
     "autoload": {
         "psr-4": {
-            "StartupPalace\\LaravelHelpers\\": "src"
+            "Kblais\\LaravelHelpers\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "StartupPalace\\LaravelHelpers\\Tests\\": "tests"
+            "Kblais\\LaravelHelpers\\Tests\\": "tests"
         }
     },
     "license": "MIT",

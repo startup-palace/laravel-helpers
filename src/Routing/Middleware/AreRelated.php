@@ -1,6 +1,6 @@
 <?php
 
-namespace StartupPalace\LaravelHelpers\Routing\Middleware;
+namespace Kblais\LaravelHelpers\Routing\Middleware;
 
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
