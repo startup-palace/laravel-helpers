@@ -2,7 +2,9 @@
 
 namespace Kblais\LaravelHelpers\Eloquent;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Arr;
 use Kblais\LaravelHelpers\Eloquent\Scopes\OrderByScope;
 
@@ -21,15 +23,13 @@ trait OrderByDefaultOrderTrait
 
     /**
      * Query without default order.
-     *
-     * @return Illuminate\Database\Eloquent\Builder
      */
-    public static function withoutDefaultOrder()
+    public static function withoutDefaultOrder(): Builder
     {
         return with(new static())->newQueryWithoutScope(static::getOrderScope());
     }
 
-    public function getDefaultOrder()
+    public function getDefaultOrder(): array
     {
         if (property_exists($this, 'defaultOrder')) {
             return $this->defaultOrder;
@@ -43,10 +43,8 @@ trait OrderByDefaultOrderTrait
 
     /**
      * Create the order global scope.
-     *
-     * @return Illuminate\Database\Eloquent\Scope
      */
-    protected static function getOrderScope()
+    protected static function getOrderScope(): Scope
     {
         $defaultOrder = with(new static())->getDefaultOrder();
 

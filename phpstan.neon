@@ -1,0 +1,12 @@
+parameters:
+  paths:
+    - './src'
+    - './tests'
+  level: 5
+  ignoreErrors:
+    -
+      message: '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder::orderBy\(\).#'
+      path: %currentWorkingDirectory%/src/Eloquent/Scopes/OrderByScope.php
+    -
+      message: '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder::toSql\(\).#'
+      path: %currentWorkingDirectory%/tests/OrderByDefaultTest.php
