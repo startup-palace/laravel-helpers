@@ -7,8 +7,10 @@ trait RelationshipHelpersTrait
     /**
      * Synchronize a hasMany relation, deleting old items, updating existing
      * and creating new ones.
-     * @param   String   $relation   Relation's name
-     * @return  Illuminate\Database\Eloquent\Model
+     *
+     * @param string $relation Relation's name
+     *
+     * @return Illuminate\Database\Eloquent\Model
      */
     protected function syncHasManyRelation($relation)
     {
@@ -16,18 +18,22 @@ trait RelationshipHelpersTrait
 
         $this->{$relation}()
             ->whereNotIn($relationKeyName, $this->{$relation}->pluck($relationKeyName)->filter())
-            ->delete();
+            ->delete()
+        ;
 
         $this->{$relation}()
-            ->saveMany($this->{$relation});
+            ->saveMany($this->{$relation})
+        ;
 
         return $this;
     }
 
     /**
      * Synchronize a hasOne relation.
-     * @param   String   $relation   Relation's name
-     * @return  Illuminate\Database\Eloquent\Model
+     *
+     * @param string $relation Relation's name
+     *
+     * @return Illuminate\Database\Eloquent\Model
      */
     protected function syncHasOneRelation($relation)
     {
@@ -44,15 +50,17 @@ trait RelationshipHelpersTrait
 
     /**
      * Manually define a hasMany relation's items.
-     * @param String    $relation   Relation's name
-     * @param array|Illuminate\Support\Collection   $items  Items of the relation
+     *
+     * @param string                              $relation Relation's name
+     * @param array|Illuminate\Support\Collection $items    Items of the relation
+     *
      * @return Illuminate\Database\Eloquent\Model
      */
     protected function setHasManyItems($relation, $items)
     {
         $relatedModel = $this->getRelationModel($relation);
 
-        if (is_array($items)) {
+        if (\is_array($items)) {
             $items = collect($items);
         }
 
@@ -61,7 +69,7 @@ trait RelationshipHelpersTrait
             $items->map(function ($data) use ($relatedModel) {
                 $item = $relatedModel->newInstance($data);
 
-                if ($item->exists = array_key_exists($relatedModel->getKeyName(), $data)) {
+                if ($item->exists = \array_key_exists($relatedModel->getKeyName(), $data)) {
                     $item->{$relatedModel->getKeyName()} = $data[$relatedModel->getKeyName()];
                 }
 
@@ -74,8 +82,11 @@ trait RelationshipHelpersTrait
 
     /**
      * Manually define a hasOne relation's items.
-     * @param String    $relation   Relation's name
-     * @param array $item   Item of the relation
+     *
+     * @param string $relation Relation's name
+     * @param array  $item     Item of the relation
+     * @param mixed  $data
+     *
      * @return Illuminate\Database\Eloquent\Model
      */
     protected function setHasOneItem($relation, $data)
@@ -85,7 +96,7 @@ trait RelationshipHelpersTrait
 
             $item = $relatedModel->newInstance($data);
 
-            if ($item->exists = array_key_exists($relatedModel->getKeyName(), $data ?: [])) {
+            if ($item->exists = \array_key_exists($relatedModel->getKeyName(), $data ?: [])) {
                 $item->{$relatedModel->getKeyName()} = $data[$relatedModel->getKeyName()];
             }
         } else {
@@ -101,24 +112,30 @@ trait RelationshipHelpersTrait
     }
 
     /**
-     * Get relation's model
-     * @param  string   $relation   Relation's name
+     * Get relation's model.
+     *
+     * @param string $relation Relation's name
+     *
      * @return Illuminate\Database\Eloquent\Model
      */
     protected function getRelationModel($relation)
     {
         return $this->{$relation}()
-            ->getModel();
+            ->getModel()
+        ;
     }
 
     /**
-     * Get relation's model primary key name
-     * @param  string   $relation   Relation's name
+     * Get relation's model primary key name.
+     *
+     * @param string $relation Relation's name
+     *
      * @return string
      */
     protected function getRelationModelKeyName($relation)
     {
         return $this->getRelationModel($relation)
-            ->getKeyName();
+            ->getKeyName()
+        ;
     }
 }

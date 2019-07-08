@@ -12,7 +12,7 @@ use Kblais\LaravelHelpers\Eloquent\Scopes\OrderByScope;
 trait OrderByDefaultOrderTrait
 {
     /**
-     * Boot the trait
+     * Boot the trait.
      */
     public static function bootOrderByDefaultOrderTrait()
     {
@@ -20,26 +20,13 @@ trait OrderByDefaultOrderTrait
     }
 
     /**
-     * Create the order global scope
-     * @return Illuminate\Database\Eloquent\Scope
-     */
-    protected static function getOrderScope()
-    {
-        $defaultOrder = with(new static)->getDefaultOrder();
-
-        return new OrderByScope(
-            Arr::get($defaultOrder, 'column'),
-            Arr::get($defaultOrder, 'asc')
-        );
-    }
-
-    /**
-     * Query without default order
+     * Query without default order.
+     *
      * @return Illuminate\Database\Eloquent\Builder
      */
     public static function withoutDefaultOrder()
     {
-        return with(new static)->newQueryWithoutScope(static::getOrderScope());
+        return with(new static())->newQueryWithoutScope(static::getOrderScope());
     }
 
     public function getDefaultOrder()
@@ -52,5 +39,20 @@ trait OrderByDefaultOrderTrait
             'column' => self::CREATED_AT,
             'asc' => true,
         ];
+    }
+
+    /**
+     * Create the order global scope.
+     *
+     * @return Illuminate\Database\Eloquent\Scope
+     */
+    protected static function getOrderScope()
+    {
+        $defaultOrder = with(new static())->getDefaultOrder();
+
+        return new OrderByScope(
+            Arr::get($defaultOrder, 'column'),
+            Arr::get($defaultOrder, 'asc')
+        );
     }
 }
