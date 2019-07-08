@@ -22,8 +22,8 @@ class AreRelated
         if ($foreignModel = $request->route($foreignRelation)) {
             $ownerModel = $request->route($ownerRelation);
 
-            $foreignKey = $foreignModel->{$ownerRelation}()->getForeignKey();
-            $ownerKey = $foreignModel->{$ownerRelation}()->getOwnerKey();
+            $foreignKey = $foreignModel->{$ownerRelation}()->getForeignKeyName();
+            $ownerKey = $foreignModel->{$ownerRelation}()->getOwnerKeyName();
 
             if ($foreignModel->{$foreignKey} !== $ownerModel->{$ownerKey}) {
                 throw new ModelNotFoundException();
