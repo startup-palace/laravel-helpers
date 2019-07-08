@@ -19,8 +19,8 @@ class AreRelated
      */
     public function handle($request, Closure $next, $ownerRelation, $foreignRelation)
     {
-        if ($foreignModel = $request->route()->parameter($foreignRelation)) {
-            $ownerModel = $request->route()->parameter($ownerRelation);
+        if ($foreignModel = $request->route($foreignRelation)) {
+            $ownerModel = $request->route($ownerRelation);
 
             $foreignKey = $foreignModel->{$ownerRelation}()->getForeignKey();
             $ownerKey = $foreignModel->{$ownerRelation}()->getOwnerKey();
