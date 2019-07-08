@@ -241,3 +241,19 @@ message you try to access belongs to it's channel:
 ```php
 Route::resource('channel.message', 'MessageController')
     ->middleware('areRelated:channel,message');
+```
+
+## Contributing
+
+### Guidelines
+
+- This projects follows the [PSR-2 coding standard](www.php-fig.org/psr/psr-2), ensure the code you write does too.
+- Consider writing tests when adding a new feature.
+
+### Running tests
+
+You can run the tests using the following command (be sure to `composer install` before):
+
+```bash
+composer run-script test
+```
