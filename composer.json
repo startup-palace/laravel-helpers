@@ -19,6 +19,14 @@
             "Kblais\\LaravelHelpers\\Tests\\": "tests"
         }
     },
+    "scripts": {
+        "phpcs": "php-cs-fixer fix",
+        "phpunit": "phpunit --verbose --color=always",
+        "test": [
+            "@phpcs",
+            "@phpunit"
+        ]
+    },
     "license": "MIT",
     "authors": [
         {
