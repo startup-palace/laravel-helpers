@@ -243,6 +243,21 @@ Route::resource('channel.message', 'MessageController')
     ->middleware('areRelated:channel,message');
 ```
 
+If you use custom route bindings, the middleware accepts a third attribute to define the relationship name. For example, if these bindings are defined:
+
+```php
+Route::bind('discussion', function ($value) {
+    return Channel::find($value);
+});
+```
+
+Your route definition will be:
+
+```php
+Route::resource('discussion.message', 'MessageController')
+    ->middleware('areRelated:discussion,message,channel');
+```
+
 ## Contributing
 
 ### Guidelines
