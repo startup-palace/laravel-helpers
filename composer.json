@@ -2,11 +2,10 @@
     "name": "kblais/laravel-helpers",
     "description": "A collection of helpers for your Laravel application.",
     "require": {
-        "illuminate/database": "^5.8"
+        "illuminate/database": "^5.8|^6.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.5",
-        "orchestra/testbench": "^3.8.0",
+        "orchestra/testbench": "^3.8.0|^4.0",
         "friendsofphp/php-cs-fixer": "^2.15",
         "phpstan/phpstan": "^0.11.12"
     },
