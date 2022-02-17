@@ -18,12 +18,10 @@ trait RelationshipHelpersTrait
 
         $this->{$relation}()
             ->whereNotIn($relationKeyName, $this->{$relation}->pluck($relationKeyName)->filter())
-            ->delete()
-        ;
+            ->delete();
 
         $this->{$relation}()
-            ->saveMany($this->{$relation})
-        ;
+            ->saveMany($this->{$relation});
 
         return $this;
     }
@@ -121,8 +119,7 @@ trait RelationshipHelpersTrait
     protected function getRelationModel($relation)
     {
         return $this->{$relation}()
-            ->getModel()
-        ;
+            ->getModel();
     }
 
     /**
@@ -135,7 +132,6 @@ trait RelationshipHelpersTrait
     protected function getRelationModelKeyName($relation)
     {
         return $this->getRelationModel($relation)
-            ->getKeyName()
-        ;
+            ->getKeyName();
     }
 }

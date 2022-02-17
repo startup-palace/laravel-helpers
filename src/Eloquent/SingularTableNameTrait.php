@@ -11,7 +11,7 @@ trait SingularTableNameTrait
 {
     public function getTable()
     {
-        if (isset($this->table)) {
+        if (!empty($this->table)) {
             return $this->table;
         }
 
