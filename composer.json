@@ -3,10 +3,10 @@
     "description": "A collection of helpers for your Laravel application.",
     "require": {
         "php": "^8.0",
-        "illuminate/database": "^8.13|^9.0"
+        "illuminate/database": "^8.13|^9.0|^10.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.23|^7.0",
+        "orchestra/testbench": "^6.23|^7.0|^8.0",
         "friendsofphp/php-cs-fixer": "^3.5",
         "phpstan/phpstan": "^1.0"
     },

@@ -8,6 +8,7 @@ use Kblais\LaravelHelpers\Tests\Models\User;
 
 /**
  * @internal
+ *
  * @covers \Kblais\LaravelHelpers\Eloquent\OrderByDefaultOrderTrait
  */
 final class OrderByDefaultTest extends TestCase
