@@ -7,6 +7,7 @@ use Kblais\LaravelHelpers\Tests\Models\User;
 
 /**
  * @internal
+ *
  * @covers \Kblais\LaravelHelpers\Eloquent\SingularTableNameTrait
  */
 final class SingularTableNameTest extends TestCase
